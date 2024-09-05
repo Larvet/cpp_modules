@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: locharve <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 12:31:04 by locharve          #+#    #+#             */
-/*   Updated: 2024/09/03 16:31:14 by locharve         ###   ########.fr       */
+/*   Updated: 2024/09/05 18:14:12 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,25 @@
 
 #	include	<iostream> //
 #	include	<string> ////
+#	include	<cstdlib>
+
+typedef enum e_param_id
+{
+	first_name,
+	last_name,
+	nickname,
+	phone_nbr,
+	darkest_secret
+}	t_param_id;
 
 class	Contact
 {
-	public:
-		std::string	first_name,
-					last_name,
-					nickname,
-					phone_number,
-					darkest_secret;
 	private:
-		std::string	*get_param_addr(std::string str);
-		void	set_param(std::string str, std::string *addr);
-		
+		std::string	param[5];
+	public:
+		std::string	get_param(t_param_id id);
+		void	set_param(t_param_id id, std::string str);
+		void	display_short(void);
 };
 
 #endif
