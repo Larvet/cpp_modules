@@ -6,7 +6,7 @@
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 16:29:36 by locharve          #+#    #+#             */
-/*   Updated: 2024/09/05 18:27:38 by locharve         ###   ########.fr       */
+/*   Updated: 2024/09/07 20:16:01 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,26 +30,29 @@ void	Contact::set_param(t_param_id p, std::string str)
 // in class Contact ?
 static void	print_limit(std::string str, int limit)
 {
-	int	i;
+	size_t	len;
+	size_t	i;
 
-	for (i = 0; i < limit - 1, str[i]; i++)
-		std::cout << str[i];
-	while (!str[i] && i < limit)
-		std::cout << ' ';
-	if (str[i])
+	len = str.length();
+	if (len <= 10)
 	{
-		if (str[i + 1])
-			std::cout << '.';
-		else
+		for (i = 0; len + i < 10; i++)
+			std::cout << ' ';
+		std::cout << str;
+	}
+	else
+	{
+		for (i = 0; i < 9; i++)
 			std::cout << str[i];
+		std::cout << '.';
 	}
 }
 
-void	Contact::display_short(void)
+void	Contact::display_short(int index)
 {
 	int	p;
 
-	std::cout << p << "         |";
+	std::cout << "         " << index << '|';
 	for (p = 0; p < 5; p++)
 	{
 		print_limit(this->param[p], 10);
@@ -57,4 +60,12 @@ void	Contact::display_short(void)
 			std::cout << '|';
 	}
 	std::cout << std::endl;
+}
+
+void	Contact::clear_params(void)
+{
+	int	i;
+
+	for(i = 0; i < 5; i++)
+		this->param[i].clear();
 }

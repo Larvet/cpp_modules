@@ -6,7 +6,7 @@
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 12:31:04 by locharve          #+#    #+#             */
-/*   Updated: 2024/09/05 18:14:12 by locharve         ###   ########.fr       */
+/*   Updated: 2024/09/07 20:08:09 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #	define	CONTACT_HPP
 
 #	include	<iostream> //
+#	include	<cstring>
 #	include	<string> ////
 #	include	<cstdlib>
 
@@ -33,7 +34,8 @@ class	Contact
 	public:
 		std::string	get_param(t_param_id id);
 		void	set_param(t_param_id id, std::string str);
-		void	display_short(void);
+		void	display_short(int index);
+		void	clear_params(void);
 };
 
 #endif
