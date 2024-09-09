@@ -6,7 +6,7 @@
 #    By: locharve <locharve@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/03 13:21:05 by locharve          #+#    #+#              #
-#    Updated: 2024/09/05 18:32:34 by locharve         ###   ########.fr        #
+#    Updated: 2024/09/09 15:33:40 by locharve         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRC =	main.cpp \
 OBJ = $(SRC:.cpp=.o)
 
 CC = c++
-FLAGS = -Wall -Werror -Wextra -g -std=c++98
+FLAGS = -Wall -Werror -Wextra -std=c++98 -g
 
 all: $(NAME)
 $(NAME): $(OBJ)

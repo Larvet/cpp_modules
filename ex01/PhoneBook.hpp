@@ -6,30 +6,25 @@
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 12:27:51 by locharve          #+#    #+#             */
-/*   Updated: 2024/09/07 19:17:20 by locharve         ###   ########.fr       */
+/*   Updated: 2024/09/09 16:05:52 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef		PHONEBOOK_HPP
 #	define	PHONEBOOK_HPP
 
-#	include	<iostream> ///
+#	include	<iostream>
 #	include	<cstring>
-#	include <string> /////
-#	include	<cstdlib> ////
+#	include <string>
+#	include	<cstdlib>
 
 class	PhoneBook
 {
 	private:
 		Contact			contact[8];
 		int				next_index;
-		int				filled;
+		int				filled; 
 	public:
-		// ask_param
-		// addContact
-		// displayPhoneBook
-		// searchContact
-		//
 		void		initPhoneBook(void);
 		std::string	askContact_param(int p);
 		void		addContact(void);

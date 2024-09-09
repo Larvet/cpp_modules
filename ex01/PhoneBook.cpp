@@ -6,7 +6,7 @@
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 16:25:38 by locharve          #+#    #+#             */
-/*   Updated: 2024/09/07 20:18:13 by locharve         ###   ########.fr       */
+/*   Updated: 2024/09/09 16:07:25 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,20 +45,14 @@ void	PhoneBook::addContact(void)
 	int				index;
 	int				p;
 
-	if (this->next_index < 8)
-		index = this->next_index;
-	else
-	{
-		index = 0;
-		this->contact[index].clear_params();
-	}
+	index = (this->next_index < 8) * this->next_index;
 	for (p = 0; p < 5; p++)
 	{
-		str = this->askContact_param(p); // syntax ? v
+		str = this->askContact_param(p);
 		this->contact[index].set_param((t_param_id)p, str);
 	}
 	this->next_index = index + 1;
-	this->filled++;
+	this->filled += this->filled < 8;
 }
 
 int	PhoneBook::displayPhoneBook(void)
@@ -68,7 +62,7 @@ int	PhoneBook::displayPhoneBook(void)
 	for (i = 0; i < this->filled; i++)
 		this->contact[i].display_short(i);
 	if (i == 0)
-		std::cout << "No contacts to display." << std::endl;
+		std::cout << "No contact to display." << std::endl;
 	return (i);
 }
 
@@ -97,29 +91,31 @@ void	PhoneBook::searchContact(void)
 
 	if (!displayPhoneBook())
 		return ;
-	do
-	{
+	do {
 		std::cout << "Index of contact to display : ";
 		std::cin >> str;
-		if (!isvalid(str))
-			std::cout << "Invalid index." << std::endl; //
-		i = stoi(str);
-		if (i >= 0 && i < this->next_index)
-			this->displayContact(this->getContact(i)); //
-		else
-			std::cout << "Invalid index." << std::endl;
-	}	while (!isvalid(str) || i < 0 || i >= this->next_index);
+		if (isvalid(str))
+		{
+			i = stoi(str);
+			if (i >= 0 && i < this->filled)
+			{
+				this->displayContact(this->getContact(i));
+				break ;
+			}
+		}
+		std::cout << "Invalid index." << std::endl;
+	} while (!isvalid(str) || i < 0 || i >= this->filled);
 }
 
 void	PhoneBook::wait_cmd(void)
 {
 	std::string	str;
 
-	do	{
+	do {
 		std::cin >> str;
 		if (str == "ADD")
 			PhoneBook::addContact();
 		else if (str == "SEARCH")
 			PhoneBook::searchContact();
-	}	while (str != "EXIT");	
+	} while (str != "EXIT");	
 }

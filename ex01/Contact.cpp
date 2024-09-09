@@ -6,16 +6,12 @@
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 16:29:36 by locharve          #+#    #+#             */
-/*   Updated: 2024/09/07 20:16:01 by locharve         ###   ########.fr       */
+/*   Updated: 2024/09/09 16:05:28 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"Contact.hpp"
 #include	"PhoneBook.hpp"
-
-// set_param
-// display_short
-// displayContact XXX
 
 std::string	Contact::get_param(t_param_id id)
 {
@@ -24,11 +20,10 @@ std::string	Contact::get_param(t_param_id id)
 
 void	Contact::set_param(t_param_id p, std::string str)
 {
-	this->param[p] = str;
+	this->param[p].assign(str);
 }
 
-// in class Contact ?
-static void	print_limit(std::string str, int limit)
+void	Contact::print_limit(std::string str, int limit)
 {
 	size_t	len;
 	size_t	i;
@@ -55,7 +50,7 @@ void	Contact::display_short(int index)
 	std::cout << "         " << index << '|';
 	for (p = 0; p < 5; p++)
 	{
-		print_limit(this->param[p], 10);
+		this->print_limit(this->param[p], 10);
 		if (p < 4)
 			std::cout << '|';
 	}
