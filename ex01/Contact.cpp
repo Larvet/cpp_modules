@@ -6,7 +6,7 @@
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 16:29:36 by locharve          #+#    #+#             */
-/*   Updated: 2024/09/09 16:05:28 by locharve         ###   ########.fr       */
+/*   Updated: 2024/09/10 14:01:08 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	Contact::set_param(t_param_id p, std::string str)
 
 void	Contact::print_limit(std::string str, int limit)
 {
-	size_t	len;
-	size_t	i;
+	std::string::iterator	it;
+	size_t	len, i;
 
 	len = str.length();
 	if (len <= 10)
@@ -37,8 +37,8 @@ void	Contact::print_limit(std::string str, int limit)
 	}
 	else
 	{
-		for (i = 0; i < 9; i++)
-			std::cout << str[i];
+		for (it = str.begin(); it != str.end(); it++)
+			std::cout << *it;
 		std::cout << '.';
 	}
 }

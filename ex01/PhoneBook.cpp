@@ -6,7 +6,7 @@
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 16:25:38 by locharve          #+#    #+#             */
-/*   Updated: 2024/09/09 16:07:25 by locharve         ###   ########.fr       */
+/*   Updated: 2024/09/10 14:00:34 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	PhoneBook::displayPhoneBook(void)
 
 	for (i = 0; i < this->filled; i++)
 		this->contact[i].display_short(i);
-	if (i == 0)
+	if (!i)
 		std::cout << "No contact to display." << std::endl;
 	return (i);
 }
@@ -74,7 +74,7 @@ Contact	PhoneBook::getContact(int i)
 void	PhoneBook::displayContact(Contact c)
 {
 	int	i;
-
+	
 	for (i = 0; i < 5; i++)
 		std::cout << c.get_param((t_param_id)i) << std::endl;
 }

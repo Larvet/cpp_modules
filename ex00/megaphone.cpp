@@ -3,27 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   megaphone.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: locharve <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 13:12:49 by locharve          #+#    #+#             */
-/*   Updated: 2024/09/03 12:25:20 by locharve         ###   ########.fr       */
+/*   Updated: 2024/09/10 13:26:50 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include 	<iostream>
+#include	<iterator>
 
 int	main(int argc, char *argv[])
 {
-	std::string	str;
-	int	i, j;
+	std::string				str;
+	std::string::iterator	it;
+	int						i;
 
 	if (argc < 2)
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-	for (i = 1; argv[i]; i++)
+	else
 	{
-		str = argv[i];
-		for (j = 0; str[j]; j++)
-			std::cout << (char)toupper(str[j]);
+		for (i = 1; argv[i]; i++)
+			str += argv[i];
+		for (it = str.begin(); it != str.end(); it++)
+			std::cout << (char)toupper(*it);
 	}
 	std::cout << std::endl;
 	return (0);
