@@ -6,7 +6,7 @@
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 16:39:16 by locharve          #+#    #+#             */
-/*   Updated: 2024/09/26 17:20:43 by locharve         ###   ########.fr       */
+/*   Updated: 2024/09/28 16:14:55 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 
 # include "Fixed.hpp"
 
-class Point
-{
+class Point {
 	private:
 		const Fixed	_x;
 		const Fixed	_y;
@@ -31,6 +30,12 @@ class Point
 		const Fixed&	getX(void) const;
 		const Fixed&	getY(void) const;
 };
+
+typedef struct	s_segment {
+	Point&	p1;
+	Point&	p2;
+	int	slope;
+}	t_segment;
 
 bool	bsp(Point const a, Point const b, Point const c, Point const point);
 
