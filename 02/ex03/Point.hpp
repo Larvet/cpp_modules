@@ -23,7 +23,7 @@ class Point {
 	public:
 		Point(void);
 		Point(const Fixed x, const Fixed y);
-		Point(const Fixed& src);
+		Point(const Point& src);
 		Point&	operator=(const Point& src);
 		~Point(void);
 		//
