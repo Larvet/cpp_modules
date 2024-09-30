@@ -6,7 +6,7 @@
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 16:39:16 by locharve          #+#    #+#             */
-/*   Updated: 2024/09/28 16:14:55 by locharve         ###   ########.fr       */
+/*   Updated: 2024/09/30 17:10:09 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,17 @@ class Point {
 		const Fixed&	getY(void) const;
 };
 
-typedef struct	s_segment {
-	Point&	p1;
-	Point&	p2;
-	int	slope;
-}	t_segment;
+std::ostream&	operator<<(std::ostream& os, const Point& src);
+
+struct s_segment {
+	const Point&	p1;
+	const Point&	p2;
+
+	s_segment(const Point & pt1, const Point & pt2);
+//	int	slope;
+};
+
+typedef struct s_segment	t_segment;
 
 bool	bsp(Point const a, Point const b, Point const c, Point const point);
 

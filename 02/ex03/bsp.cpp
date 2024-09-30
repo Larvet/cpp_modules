@@ -6,7 +6,7 @@
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 16:00:30 by locharve          #+#    #+#             */
-/*   Updated: 2024/09/28 17:59:19 by locharve         ###   ########.fr       */
+/*   Updated: 2024/09/30 16:32:16 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,23 +27,51 @@
 
 // ...
 
-void init_segment(t_segment &seg, Point const p1, Point const p2)
+s_segment::s_segment(const Point& pt1, const Point&pt2): p1(pt1), p2(pt2) {}
+/*
+static void init_segment(t_segment &seg, Point const p1, Point const p2)
 {
 	seg.p1 = p1;
 	seg.p2 = p2;
-	seg.slope = (seg.p1.getY().toFloat() - seg.p2.getY().toFloat()) / (seg.p1.getX().toFloat() - seg.p2.getX().toFloat());
+//	seg.slope = (seg.p1.getY().toFloat() - seg.p2.getY().toFloat()) / (seg.p1.getX().toFloat() - seg.p2.getX().toFloat());
 	// cas particulier : segment vertical. division par zero a eviter
 }
+*/
 
-void stretch_segment(t_segment &seg, Point &const opposite)
-{
-	int i = 0; // not i. slope ?
+// y = ax + b
+// a = coef directeur 
 
-	while (seg.p1.getX().getRawBits() + i < opposite.getX().getRawBits() && seg.p1.getY().getRawBits() + i < opposite.getY().getRawBits() && seg.p2.getX().getRawBits() + i < opposite.getX().getRawBits() && seg.p2.getY().getRawBits() + i < opposite.getY().getRawBits())
-		i++; //
-}
+static int	lineEquation(const Point& origin, const Point& limit, const Point& p) {
+	Fixed	lx(limit.getX().toFloat() - origin.getX().toFloat()),
+			ly(limit.getY().toFloat() - origin.getY().toFloat()),
+			px(p.getX().toFloat() - origin.getX().toFloat()),
+			py(p.getY().toFloat() - origin.getY().toFloat());
+	Point	newLimit(lx, ly),
+			newPoint(px, py);
+/*
+	Point	newLimit(limit.getX() - origin.getX(),
+				limit.getY() - origin.getY()),
+			newPoint(p.getX() - origin.getX(),
+				p.getY() - origin.getY());
+*/
 
-int	lineEquation(const Point& origin, const Point& limit, Point& p) {
+	std::cout << "lineEquation:" << std::endl 
+		<< "origin: " << origin << std::endl
+		<< "limit: " << limit << std::endl
+		<< "p: " << p << std::endl << std::endl;
+
+	float	lineEq = (newLimit.getY().toFloat() / newLimit.getX().toFloat())
+				* newPoint.getX().toFloat();
+	std::cout
+		<< "lineEq = " << lineEq << std::endl
+		<< "py = " << newPoint.getY().toFloat() << std::endl;
+	if (newPoint.getY().toFloat() < lineEq)
+		return (-1);
+	else if (newPoint.getY().toFloat() > lineEq)
+		return (1);
+	else
+		return (0);
+/*
 	float	result = ((limit.getY().toFloat() - origin.getY().toFloat())
 		/ (limit.getX().toFloat() - origin.getX().toFloat()))
 		* p.getX().toFloat() + origin.getY().toFloat();
@@ -53,27 +81,39 @@ int	lineEquation(const Point& origin, const Point& limit, Point& p) {
 		return (1);
 	else
 		return (0);
+*/
 }
 
-bool	onSameSubplane(t_segment seg, Point opposite, Point point) {
+static bool	onSameSubplane(t_segment& seg, const Point& opposite, const Point& point) {
+
+	std::cout << "onSameSubPlane: " << std::endl
+		<< "opposite: " << opposite << std::endl
+		<< "point: " << point << std::endl << std::endl;
+
 	Fixed	minX = (minX.min(seg.p1.getX(), seg.p2.getX()));
 	// recopy constructors ?
 	const Point	origin = minX == seg.p1.getX() ? seg.p1 : seg.p2;
 	const Point	limit = minX == seg.p1.getX() ? seg.p2 : seg.p1;
-
-	return (lineEquation(origin, limit, opposite)
-		== lineEquation(origin, limit, point));
+	int	lineEqOp = lineEquation(origin, limit, opposite),
+		lineEqPt = lineEquation(origin, limit, point);
+	return (lineEqOp && lineEqPt && lineEqOp == lineEqPt);
 }
 
 bool bsp(Point const a, Point const b, Point const c, Point const point)
 {
-	t_segment ab, bc, ca;
+//	t_segment ab(a, b), bc(b, c), ca(c, a);
 
-	init_segment(ab, a, b);
-	init_segment(bc, b, c);
-	init_segment(ca, c, a);
+	std::cout << "bsp: " << std::endl
+		<< "a: " << a << std::endl
+		<< "b: " << b << std::endl
+		<< "c: " << c << std::endl << std::endl;
+//	init_segment(ab, a, b);
+//	init_segment(bc, b, c);
+//	init_segment(ca, c, a);
 
-	return (onSameSubplane(ab, c, point)
+	return (true);
+/*	return (onSameSubplane(ab, c, point)
 		&& onSameSubplane(bc, a, point)
 		&& onSameSubplane(ca, b, point));
+*/
 }
