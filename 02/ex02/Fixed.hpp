@@ -36,7 +36,6 @@ class Fixed
 		float	toFloat(void) const;
 		int	toInt(void) const;
 	
-		// 02
 		// operators
 	
 		bool	operator>(const Fixed& to_cmp);

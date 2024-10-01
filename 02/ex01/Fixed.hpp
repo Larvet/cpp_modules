@@ -19,8 +19,8 @@
 class Fixed
 {
 private:
-	int	nbr;
-	static const int	bit_nbr = 8;
+	int	_nbr;
+	static const int	_bit_n = 8;
 public:
 	Fixed(void);
 	Fixed(const Fixed & src);
@@ -35,8 +35,6 @@ public:
 
 	float	toFloat(void) const;
 	int	toInt(void) const;
-
-//	std::ostream&	Fixed::operator<<(const std::ostream& os, const Fixed& src);
 };
 
 std::ostream&	operator<<(std::ostream& os, const Fixed& src);

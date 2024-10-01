@@ -26,6 +26,8 @@ $(NAME): $(OBJ)
 clean:
 	@rm -rf $(OBJ)
 
+c: all clean
+
 fclean: clean
 	@rm -rf $(NAME)
 

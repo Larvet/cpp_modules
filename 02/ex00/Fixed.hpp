@@ -18,8 +18,8 @@
 class Fixed
 {
 private:
-	int	nbr;
-	static const int	bit_nbr = 8;
+	int	_nbr;
+	static const int	_bit_n = 8;
 public:
 	Fixed(void);
 	Fixed(const Fixed & src);

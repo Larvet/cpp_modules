@@ -14,63 +14,48 @@
 
 /* Coplein */
 
-Fixed::Fixed(void) : nbr(0)
-{
-//	std::cout << "Default constructor called" << std::endl;
-}
+Fixed::Fixed(void) : nbr(0) {}
 
-Fixed::Fixed(const Fixed & src)
-{
-//	std::cout << "Copy constructor called" << std::endl;
+Fixed::Fixed(const Fixed & src) {
 	*this = src;
 }
 
-Fixed::~Fixed(void)
-{
-//	std::cout << "Destructor called" << std::endl;
+Fixed::~Fixed(void) {
 }
 
-Fixed & Fixed::operator=(const Fixed & src)
-{
-//	std::cout << "Copy assignment operator called" << std::endl;
+Fixed & Fixed::operator=(const Fixed & src) {
 	this->setRawBits(src.getRawBits());
 	return (*this);
 }
 
 /* new constructors */
 
-Fixed::Fixed(const int n)
-{
+Fixed::Fixed(const int n) {
 	this->setRawBits(n << bit_nbr);
 }
 
-Fixed::Fixed(const float f)
-{
+Fixed::Fixed(const float f) {
 	this->nbr = roundf(f * (1 << bit_nbr));
 }
 
 /* old member fonctions */
 
-int	Fixed::getRawBits(void) const
-{
+int	Fixed::getRawBits(void) const {
 	return (this->nbr);
 }
 
-void	Fixed::setRawBits(int const raw)
-{
+void	Fixed::setRawBits(int const raw) {
 	this->nbr = raw;
 }
 
 /* 01 member fonctions */
 
-float	Fixed::toFloat(void) const
-{
+float	Fixed::toFloat(void) const {
 	int	raw = getRawBits();
 	return ((float)(raw) / (float)((1 << bit_nbr)));
 }
 
-int	Fixed::toInt(void) const
-{
+int	Fixed::toInt(void) const {
 	return (this->getRawBits() >> bit_nbr);
 }
 

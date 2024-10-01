@@ -19,14 +19,12 @@ class Point {
 	private:
 		const Fixed	_x;
 		const Fixed	_y;
-		//
 	public:
 		Point(void);
 		Point(const Fixed x, const Fixed y);
 		Point(const Point& src);
-		Point&	operator=(const Point& src);
 		~Point(void);
-		//
+
 		const Fixed&	getX(void) const;
 		const Fixed&	getY(void) const;
 };
@@ -38,7 +36,6 @@ struct s_segment {
 	const Point&	p2;
 
 	s_segment(const Point & pt1, const Point & pt2);
-//	int	slope;
 };
 
 typedef struct s_segment	t_segment;

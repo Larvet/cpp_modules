@@ -14,7 +14,7 @@
 
 /* Coplein */
 
-Fixed::Fixed(void) : nbr(0)
+Fixed::Fixed(void) : _nbr(0)
 {
 	std::cout << "Default constructor called" << std::endl;
 }
@@ -23,7 +23,7 @@ Fixed::Fixed(const Fixed & src)
 {
 	std::cout << "Copy constructor called" << std::endl;
 	*this = src;
-	std::cout << "this nbr = " << (src.nbr >> bit_nbr) << std::endl;
+	std::cout << "this nbr = " << (src._nbr >> _bit_n) << std::endl;
 }
 
 Fixed::~Fixed(void)
@@ -43,8 +43,7 @@ Fixed & Fixed::operator=(const Fixed & src)
 Fixed::Fixed(const int n)
 {
 	std::cout << "Int constructor called" << std::endl;
-	//
-	this->setRawBits(n << bit_nbr);
+	this->setRawBits(n << _bit_n);
 }
 
 Fixed::Fixed(const float f)
@@ -54,21 +53,19 @@ Fixed::Fixed(const float f)
 		<< "float = " << f << std::endl
 		<< "roundf(f) = " << roundf(f) << std::endl
 		<< "f * (1 << 8) = " << f / (1 << 8) << std::endl;
-	this->nbr = f * (1 << bit_nbr);
-	//
-	
+	this->setRawBits(f * (1 << _bit_n));
 }
 
 /* old member fonctions */
 
 int	Fixed::getRawBits(void) const
 {
-	return (this->nbr);
+	return (this->_nbr);
 }
 
 void	Fixed::setRawBits(int const raw)
 {
-	this->nbr = raw;
+	this->_nbr = raw;
 }
 
 /* new member fonctions */
@@ -76,12 +73,12 @@ void	Fixed::setRawBits(int const raw)
 float	Fixed::toFloat(void) const
 {
 	int	raw = getRawBits();
-	return ((float)(raw) / (float)((1 << bit_nbr)));
+	return ((float)(raw) / (float)((1 << _bit_n)));
 }
 
 int	Fixed::toInt(void) const
 {
-	return (this->getRawBits() >> bit_nbr);
+	return (this->getRawBits() >> _bit_n);
 }
 
 std::ostream&	operator<<(std::ostream& os, const Fixed& src) {

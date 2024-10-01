@@ -16,23 +16,9 @@ Point::Point(void): _x(0), _y(0) {}
 
 Point::Point(const Fixed x, const Fixed y): _x(x), _y(y) {}
 
-Point::Point(const Point& src) {
-	std::cout << "Point copy constructor called" << std::endl;
-	*this = Point(src.getX(), src.getY());
-	std::cout << "this = " << *this << std::endl;
-}
-/*
-Point&	Point::operator=(const Point& src) {
-//	const Point	newP(src.getX(), src.getY());
-//	delete this;
-	*this = src;
-//	*this = Point(src.getX(), src.getY());
-	return (*this);
-}
-*/
-Point::~Point(void) {
-	std::cout << "Point destructor called" << std::endl;
-}
+Point::Point(const Point& src): _x(src.getX()), _y(src.getY()) {}
+
+Point::~Point(void) {}
 
 const Fixed&	Point::getX(void) const {
 	return (this->_x);

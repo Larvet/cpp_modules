@@ -22,10 +22,12 @@ int	main(void) {
 	
 	Fixed	p1x(-2), p1y(3),
 		p2x(1), p2y(1),
-		p3x(0), p3y(4);
+		p3x(0), p3y(4),
+		p4x(0), p4y(4.59f);
 	Point	p1(p1x, p1y),
 		p2(p2x, p2y),
-		p3(p3x, p3y);
+		p3(p3x, p3y),
+		p4(p4x, p4y);
 
 	std::cout << "main: " << std::endl
 		<< "ax = " << ax << " ay = " << ay << std::endl
@@ -34,26 +36,29 @@ int	main(void) {
 
 	std::cout
 		<< "A(-3, 4) ; B(8, 0) ; C(2, 5)" << std::endl
-		<< "P1(-2, 3) : " << std::endl;
+		<< "P1(-2, 3) : ";
 	if (bsp(a, b, c, p1))
 		std::cout << "in triangle" << std::endl;
 	else
-		std::cout << "out of triangle" << std::endl
-			<< std::endl;
+		std::cout << "out of triangle" << std::endl;
 	
-	std::cout << "P2(1, 1) : " << std::endl;
+	std::cout << "P2(1, 1) : ";
 		if (bsp(a, b, c, p2))
 			std::cout << "in triangle" << std::endl;
 		else
-			std::cout << "out of triangle" << std::endl
-				<< std::endl;
+			std::cout << "out of triangle" << std::endl;
 
-	std::cout << "P3(0, 4) : " << std::endl;
+	std::cout << "P3(0, 4) : ";
 		if (bsp(a, b, c, p3))
 			std::cout << "in triangle" << std::endl;
 		else
-			std::cout << "out of triangle" << std::endl
-				<< std::endl;
+			std::cout << "out of triangle" << std::endl;
+	
+		std::cout << "P3(0, 4.59) : ";
+		if (bsp(a, b, c, p4))
+			std::cout << "in triangle" << std::endl;
+		else
+			std::cout << "out of triangle" << std::endl;
 
 	return (0);
 }
