@@ -6,7 +6,7 @@
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 14:21:12 by locharve          #+#    #+#             */
-/*   Updated: 2024/09/26 16:38:38 by locharve         ###   ########.fr       */
+/*   Updated: 2024/10/07 06:19:27 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 class Fixed
 {
 	private:
-		int	nbr;
-		static const int	bit_nbr = 8;
+		int	_nbr;
+		static const int	_bit_n = 8;
 	public:
 		Fixed(void);
 		Fixed(const Fixed & src);

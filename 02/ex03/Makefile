@@ -6,7 +6,7 @@
 #    By: locharve <locharve@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/13 15:31:15 by locharve          #+#    #+#              #
-#    Updated: 2024/09/30 17:10:49 by locharve         ###   ########.fr        #
+#    Updated: 2024/10/07 06:11:10 by locharve         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,12 +16,15 @@ SRC = main.cpp Fixed.cpp Point.cpp bsp.cpp
 OBJ = $(SRC:.cpp=.o)
 
 CXX = c++
-FLAGS = -Wall -Werror -Wextra -std=c++98 -g
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -g
+
+%.o: %.c
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CXX) $(FLAGS) $(OBJ) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
 clean:
 	@rm -rf $(OBJ)

@@ -6,7 +6,7 @@
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 15:01:55 by locharve          #+#    #+#             */
-/*   Updated: 2024/09/26 14:15:16 by locharve         ###   ########.fr       */
+/*   Updated: 2024/10/07 06:27:30 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	main(void)
 		<< "a / c = " << a / c << std::endl
 		<< std::endl
 		<< "++a = " << ++a << std::endl
-		<< "a++ = " << a++ << " then: " << c << std::endl
+		<< "a++ = " << a++ << " then: " << a << std::endl
 		<< "--b = " << --b << std::endl
 		<< "a-- = " << a-- << " then: " << a << std::endl
 		<< std::endl

@@ -6,7 +6,7 @@
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 16:00:30 by locharve          #+#    #+#             */
-/*   Updated: 2024/09/30 16:32:16 by locharve         ###   ########.fr       */
+/*   Updated: 2024/10/07 06:30:29 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ static int	lineEquation(const Point& origin, const Point& limit, const Point& p)
 
 static bool	onSameSubplane(t_segment& seg, const Point& opposite, const Point& point) {
 	Fixed	minX = (minX.min(seg.p1.getX(), seg.p2.getX()));
-	// recopy constructors ?
 	const Point	origin = minX == seg.p1.getX() ? seg.p1 : seg.p2;
 	const Point	limit = minX == seg.p1.getX() ? seg.p2 : seg.p1;
 	int	lineEqOp = lineEquation(origin, limit, opposite),
@@ -49,5 +48,4 @@ bool bsp(Point const a, Point const b, Point const c, Point const point)
 	return (onSameSubplane(ab, c, point)
 		&& onSameSubplane(bc, a, point)
 		&& onSameSubplane(ca, b, point));
-
 }

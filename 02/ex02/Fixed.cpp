@@ -6,7 +6,7 @@
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 14:31:04 by locharve          #+#    #+#             */
-/*   Updated: 2024/09/26 14:12:57 by locharve         ###   ########.fr       */
+/*   Updated: 2024/10/07 06:21:44 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /* Coplein */
 
-Fixed::Fixed(void) : nbr(0) {}
+Fixed::Fixed(void) : _nbr(0) {}
 
 Fixed::Fixed(const Fixed & src) {
 	*this = src;
@@ -30,32 +30,32 @@ Fixed & Fixed::operator=(const Fixed & src) {
 /* new constructors */
 
 Fixed::Fixed(const int n) {
-	this->setRawBits(n << bit_nbr);
+	this->setRawBits(n << _bit_n);
 }
 
 Fixed::Fixed(const float f) {
-	this->nbr = roundf(f * (1 << bit_nbr));
+	this->setRawBits(roundf(f * (1 << _bit_n)));
 }
 
 /* old member fonctions */
 
 int	Fixed::getRawBits(void) const {
-	return (this->nbr);
+	return (this->_nbr);
 }
 
 void	Fixed::setRawBits(int const raw) {
-	this->nbr = raw;
+	this->_nbr = raw;
 }
 
 /* 01 member fonctions */
 
 float	Fixed::toFloat(void) const {
 	int	raw = getRawBits();
-	return ((float)(raw) / (float)((1 << bit_nbr)));
+	return ((float)(raw) / (float)((1 << _bit_n)));
 }
 
 int	Fixed::toInt(void) const {
-	return (this->getRawBits() >> bit_nbr);
+	return (this->getRawBits() >> _bit_n);
 }
 
 /* 01 operator overload */
@@ -112,24 +112,24 @@ Fixed	Fixed::operator/(const Fixed& to_clc) {
 /* Incrementation & decrementation */
 
 Fixed&	Fixed::operator++(void) {
-	this->nbr += 1;
+	this->_nbr += 1;
 	return (*this);
 }
 
 Fixed	Fixed::operator++(int) {
 	Fixed	tmp = *this;
-	this->nbr += 1;
+	this->_nbr += 1;
 	return (tmp);
 }
 
 Fixed&	Fixed::operator--(void) {
-	this->nbr -= 1;
+	this->_nbr -= 1;
 	return (*this);
 }
 
 Fixed	Fixed::operator--(int) {
 	Fixed	tmp = *this;
-	this->nbr -= 1;
+	this->_nbr -= 1;
 	return (tmp);
 }
 
