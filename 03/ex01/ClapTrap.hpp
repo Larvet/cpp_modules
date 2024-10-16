@@ -6,7 +6,7 @@
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 10:10:31 by locharve          #+#    #+#             */
-/*   Updated: 2024/10/16 10:57:33 by locharve         ###   ########.fr       */
+/*   Updated: 2024/10/16 11:54:10 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,14 @@
 # include <string>
 
 class	ClapTrap {
-	private:
+	protected:
 		std::string	_name;
 		int	_hitPoints;
 		int	_energyPoints;
 		int	_attackDamage;
 	public:
 		ClapTrap();
+		ClapTrap(std::string name, int hp, int ep, int ad); //
 		ClapTrap(const ClapTrap& src);
 		ClapTrap&	operator=(const ClapTrap& src);
 		~ClapTrap();

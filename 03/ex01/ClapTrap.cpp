@@ -6,22 +6,26 @@
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 10:10:05 by locharve          #+#    #+#             */
-/*   Updated: 2024/10/16 11:11:59 by locharve         ###   ########.fr       */
+/*   Updated: 2024/10/16 11:54:08 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap(void): _name("unnamed"), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
-	std::cout << "------- Default constructor called: " << getName() << std::endl;
+	std::cout << "------- ClapTrap default constructor called: " << getName() << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name): _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
-	std::cout << "------- String constructor called: " << getName() << std::endl;
+	std::cout << "------- ClapTrap string constructor called: " << getName() << std::endl;
+}
+
+ClapTrap::ClapTrap(std::string name, int hp, int ep, int ad): _name(name), _hitPoints(hp), _energyPoints(ep), _attackDamage(ad) {
+	std::cout << "------- ClapTrap complete constructor called: " << getName() << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& src) {
-	std::cout << "------- Copy constructor called" << std::endl;
+	std::cout << "------- ClapTrap copy constructor called" << std::endl;
 	*this = src;
 }
 
