@@ -41,7 +41,7 @@ class	ClapTrap {
 		void	setEnergyPoints(int n);
 		void	setAttackDamage(int n);
 
-		void	attack(const std::string& target);
+		virtual void	attack(const std::string& target);
 		void	takeDamage(unsigned int amount);
 		void	beRepaired(unsigned int amount);
 };

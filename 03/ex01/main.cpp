@@ -15,6 +15,9 @@
 int	main(void) {
 	ScavTrap	john("John");
 	ScavTrap	unnamed;
-	ClapTrap	clap("Clap");
+	ScavTrap	billy = unnamed;
+//	ClapTrap	clap("Clap");
 
+	john.attack(unnamed.getName());
+	return (0);
 }

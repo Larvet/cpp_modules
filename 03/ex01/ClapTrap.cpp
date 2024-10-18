@@ -38,7 +38,7 @@ ClapTrap&	ClapTrap::operator=(const ClapTrap& src) {
 }
 
 ClapTrap::~ClapTrap(void) {
-	std::cout << "Destructor called: " << getName() << std::endl;
+	std::cout << "ClapTrap destructor called: " << getName() << std::endl;
 }
 
 std::string	ClapTrap::getName(void) const {
@@ -85,7 +85,7 @@ void	ClapTrap::attack(const std::string& target) {
 	else
 		std::cout
 			<< "Claptrap " << getName()
-			<< " can't attack: has no energy left ! " << std::endl;
+			<< " can't attack: has no energy left !" << std::endl;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount) {
