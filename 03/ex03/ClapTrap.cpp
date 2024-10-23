@@ -6,7 +6,7 @@
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 10:10:05 by locharve          #+#    #+#             */
-/*   Updated: 2024/10/23 07:33:57 by locharve         ###   ########.fr       */
+/*   Updated: 2024/10/23 10:20:46 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,8 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 }
 
 std::ostream&	operator<<(std::ostream& os, const ClapTrap& src) {
-	os	<< src.getName() << ":" << std::endl << "\tHP: " << src.getHitPoints()
+	os	<< src.getName() << ":" << std::endl
+		<< "\tHP: " << src.getHitPoints()
 		<< "\tEP: " << src.getEnergyPoints()
 		<< "\tAD: " << src.getAttackDamage();
 	return (os);

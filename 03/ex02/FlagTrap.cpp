@@ -1,43 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*   FlagTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 11:32:53 by locharve          #+#    #+#             */
-/*   Updated: 2024/10/23 07:33:54 by locharve         ###   ########.fr       */
+/*   Created: 2024/10/23 07:35:45 by locharve          #+#    #+#             */
+/*   Updated: 2024/10/23 08:36:19 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "FlagTrap.hpp"
 
-/* ScavTrap::ScavTrap(std::string name): _name(name), _hitPoints(100), _energyPoints(50), _attackDamage(20) {
-	std::cout << "------- ScavTrap string constructor called: " << getName() << std::endl;
-} */
-
-ScavTrap::ScavTrap(void) {
+FlagTrap::FlagTrap(void) {
 	setName("unnamed");
 	setHitPoints(100);
-	setEnergyPoints(50);
-	setAttackDamage(20);
-	std::cout << "------- ScavTrap default constructor called: " << getName() << std::endl;
+	setEnergyPoints(100);
+	setAttackDamage(30);
+	std::cout << "------- FlagTrap default constructor called: " << getName() << std::endl;
 }
 
-ScavTrap::ScavTrap(std::string name) {
+FlagTrap::FlagTrap(std::string name) {
 	setName(name);
 	setHitPoints(100);
-	setEnergyPoints(50);
-	setAttackDamage(20);
-	std::cout << "------- ScavTrap string constructor called: " << getName() << std::endl;
+	setEnergyPoints(100);
+	setAttackDamage(30);
+	std::cout << "------- FlagTrap string constructor called: " << getName() << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap& src) {
+FlagTrap::FlagTrap(const FlagTrap& src) {
 	*this = src;
-	std::cout << "------- ScavTrap copy constructor called: " << getName() << std::endl;
+	std::cout << "------- FlagTrap copy constructor called: " << getName() << std::endl;
 }
 
-ScavTrap&	ScavTrap::operator=(const ScavTrap& src) {
+FlagTrap&	FlagTrap::operator=(const FlagTrap& src) {
 	setName(src.getName());
 	setHitPoints(src.getHitPoints());
 	setEnergyPoints(src.getEnergyPoints());
@@ -45,14 +41,14 @@ ScavTrap&	ScavTrap::operator=(const ScavTrap& src) {
 	return (*this);
 }
 
-ScavTrap::~ScavTrap(void) {
-	std::cout << "------- ScavTrap destructor called: " << getName() << std::endl;
+FlagTrap::~FlagTrap(void) {
+	std::cout << "------- FlagTrap destructor called: " << getName() << std::endl;
 }
 
-int	ScavTrap::isAlive(void) {
+int	FlagTrap::isAlive(void) {
 	if (getHitPoints() <= 0) {
 		std::cout
-			<< "ScavTrap " << getName()
+			<< "FlagTrap " << getName()
 			<< " can't do anything: it's dead!"
 			<< std::endl;
 		return (0);
@@ -61,12 +57,12 @@ int	ScavTrap::isAlive(void) {
 		return (1);
 }
 
-void	ScavTrap::attack(const std::string& target) {
+void	FlagTrap::attack(const std::string& target) {
 	if (!isAlive())
 		return ;
 	if (getEnergyPoints()) {
 		std::cout
-			<< "ScavTrap " << getName()
+			<< "FlagTrap " << getName()
 			<< " attacks " << target
 			<< ", causing " << getAttackDamage()
 			<< " points of damage!" << std::endl;
@@ -74,42 +70,42 @@ void	ScavTrap::attack(const std::string& target) {
 	}
 	else
 		std::cout
-			<< "ScavTrap " << getName()
+			<< "FlagTrap " << getName()
 			<< " can't attack: has no energy left !" << std::endl;
 }
 
-void	ScavTrap::takeDamage(unsigned int amount) {
+void	FlagTrap::takeDamage(unsigned int amount) {
 	if (!isAlive())
 		return ;
 	setHitPoints(getHitPoints() - amount);
 	if (getHitPoints() <= 0)
-		std::cout << "ScavTrap " << getName() << " died !" << std::endl;
+		std::cout << "FlagTrap " << getName() << " died !" << std::endl;
 }
 
-void	ScavTrap::beRepaired(unsigned int amount) {
+void	FlagTrap::beRepaired(unsigned int amount) {
 	if (!isAlive())
 		return ;
 	if (getEnergyPoints()) {
 		if (getHitPoints() < 100) {
 			std::cout
-				<< "ScavTrap " << getName()
-				<< " repairs itself !" << std::endl;
+				<< "FlagTrap " << getName()
+				<< " repairs itself!" << std::endl;
 			setHitPoints(getHitPoints() + amount);
 			setEnergyPoints(getEnergyPoints() - 1);
 		}
 		else
 			std::cout
-				<< "ScavTrap " << getName()
+				<< "FlagTrap " << getName()
 				<< " can't be repaired : it doesn't need it !" << std::endl;
 	}
 	else
 		std::cout
-			<< "ScavTrap " << getName()
+			<< "FlagTrap " << getName()
 			<< " can't be repaired: it has no energy left !" << std::endl;
 }
 
-void	ScavTrap::guardGate(void) {
-	if (!isAlive())
-		return ;
-	std::cout << this->getName() << " is guarding the Gate !" << std::endl;
+void	FlagTrap::highFivesGuys(void) {
+	std::cout
+		<< "FlagTrap " << getName()
+		<< " requests a high five!" << std::endl;
 }

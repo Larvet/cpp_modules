@@ -6,7 +6,7 @@
 #    By: locharve <locharve@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/16 10:38:02 by locharve          #+#    #+#              #
-#    Updated: 2024/10/23 07:35:29 by locharve         ###   ########.fr        #
+#    Updated: 2024/10/23 08:34:44 by locharve         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,11 +29,10 @@ $(NAME): $(OBJ)
 clean:
 	@rm -rf $(OBJ)
 
+c: all clean
 
 fclean: clean
 	@rm -rf $(NAME)
-
-c: all clean
 
 re: clean all
 

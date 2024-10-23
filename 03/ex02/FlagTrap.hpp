@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   FlagTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 11:30:06 by locharve          #+#    #+#             */
-/*   Updated: 2024/10/23 07:33:59 by locharve         ###   ########.fr       */
+/*   Created: 2024/10/23 07:35:37 by locharve          #+#    #+#             */
+/*   Updated: 2024/10/23 08:33:52 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#ifndef FLAGTRAP_HPP
+# define FLAGTRAP_HPP
 
 # include "ClapTrap.hpp"
 
-class	ScavTrap: public ClapTrap {
+class	FlagTrap: public ClapTrap {
 	public:
-		ScavTrap(void);
-		ScavTrap(std::string name);
-		ScavTrap(const ScavTrap& src);
-		ScavTrap&	operator=(const ScavTrap& src);
-		~ScavTrap(void);
-		
+		FlagTrap(void);
+		FlagTrap(std::string name);
+		FlagTrap(const FlagTrap& src);
+		FlagTrap&	operator=(const FlagTrap& src);
+		~FlagTrap(void);
+
 		int	isAlive(void);
 
 		void	attack(const std::string& target);
 		void	takeDamage(unsigned int amount);
 		void	beRepaired(unsigned int amount);
 
-		void	guardGate(void);
+		void	highFivesGuys(void);
 };
 
 #endif

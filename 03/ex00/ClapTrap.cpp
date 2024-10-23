@@ -6,23 +6,23 @@
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 10:10:05 by locharve          #+#    #+#             */
-/*   Updated: 2024/10/16 11:11:59 by locharve         ###   ########.fr       */
+/*   Updated: 2024/10/23 07:22:56 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap(void): _name("unnamed"), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
-	std::cout << "------- Default constructor called: " << getName() << std::endl;
+	std::cout << "------- ClapTrap default constructor called: " << getName() << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name): _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
-	std::cout << "------- String constructor called: " << getName() << std::endl;
+	std::cout << "------- ClapTrap string constructor called: " << getName() << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& src) {
-	std::cout << "------- Copy constructor called" << std::endl;
 	*this = src;
+	std::cout << "------- ClapTrap copy constructor called: " << getName() << std::endl;
 }
 
 ClapTrap&	ClapTrap::operator=(const ClapTrap& src) {
@@ -34,7 +34,7 @@ ClapTrap&	ClapTrap::operator=(const ClapTrap& src) {
 }
 
 ClapTrap::~ClapTrap(void) {
-	std::cout << "Destructor called: " << getName() << std::endl;
+	std::cout << "------- ClapTrap destructor called: " << getName() << std::endl;
 }
 
 std::string	ClapTrap::getName(void) const {
@@ -75,12 +75,12 @@ void	ClapTrap::attack(const std::string& target) {
 			<< "ClapTrap " << getName()
 			<< " attacks " << target
 			<< ", causing " << getAttackDamage()
-			<< " !" << std::endl;
+			<< " points of damage!" << std::endl;
 		setEnergyPoints(getEnergyPoints() - 1);
 	}
 	else
 		std::cout
-			<< "Claptrap " << getName()
+			<< "ClapTrap " << getName()
 			<< " can't attack: has no energy left ! " << std::endl;
 }
 
@@ -106,7 +106,7 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 	}
 	else
 		std::cout
-			<< "Claptrap " << getName()
+			<< "ClapTrap " << getName()
 			<< " can't be repaired: it has no energy left !" << std::endl;
 }
 

@@ -5,31 +5,35 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 11:38:48 by locharve          #+#    #+#             */
-/*   Updated: 2024/10/23 07:33:51 by locharve         ###   ########.fr       */
+/*   Created: 2024/10/23 08:03:30 by locharve          #+#    #+#             */
+/*   Updated: 2024/10/23 08:31:58 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "FlagTrap.hpp"
 
 int	main(void) {
-	ScavTrap	john("John");
-	std::cout << john << std::endl;
+	FlagTrap	gortax("Gortax");
+	std::cout << gortax << std::endl;
 
-	ScavTrap	unnamed;
+	FlagTrap	unnamed;
 	std::cout << unnamed << std::endl;
 
-	ScavTrap	billy(unnamed);
-	std::cout << billy << std::endl;
+	FlagTrap	ultramorth(gortax);
+	std::cout << ultramorth << std::endl;
 
-//	ClapTrap	clap("Clap");
+	FlagTrap	oktrombo("Oktrombo");
+	std::cout << oktrombo << std::endl;
 
-	john.attack(unnamed.getName());
-	std::cout << john << std::endl;
-	unnamed.takeDamage(john.getAttackDamage());
-	std::cout << unnamed << std::endl;
-	unnamed.beRepaired(1);
-	std::cout << unnamed << std::endl;
-	billy.guardGate();
+	ultramorth.attack(oktrombo.getName());
+	std::cout << ultramorth << std::endl;
+
+	oktrombo.takeDamage(ultramorth.getAttackDamage());
+	std::cout << oktrombo << std::endl;
+
+	oktrombo.beRepaired(1);
+	std::cout << oktrombo << std::endl;
+
+	unnamed.highFivesGuys();
 	return (0);
 }
