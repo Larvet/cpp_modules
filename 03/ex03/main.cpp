@@ -6,23 +6,23 @@
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 08:03:30 by locharve          #+#    #+#             */
-/*   Updated: 2024/10/23 11:54:04 by locharve         ###   ########.fr       */
+/*   Updated: 2024/10/25 11:34:55 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
 int	main(void) {
-	/* FlagTrap	gortax("Gortax");
+	FragTrap	gortax("Gortax");
 	std::cout << gortax << std::endl;
 
-	FlagTrap	unnamed;
+/*	FragTrap	unnamed;
 	std::cout << unnamed << std::endl;
 
-	FlagTrap	ultramorth(gortax);
+	FragTrap	ultramorth(gortax);
 	std::cout << ultramorth << std::endl;
 
-	FlagTrap	oktrombo("Oktrombo");
+	FragTrap	oktrombo("Oktrombo");
 	std::cout << oktrombo << std::endl;
 
 	ultramorth.attack(oktrombo.getName());
@@ -37,8 +37,10 @@ int	main(void) {
 	unnamed.highFivesGuys(); */
 
 	DiamondTrap	kogromoth("Kogromoth");
-	std::cout << kogromoth << std::endl
-		<< kogromoth.getClapTrapName() << std::endl;
+	std::cout << kogromoth << std::endl;
+	kogromoth.attack("Gortax");
+	gortax.takeDamage(kogromoth.getAttackDamage());
 
+	kogromoth.whoAmI();
 	return (0);
 }

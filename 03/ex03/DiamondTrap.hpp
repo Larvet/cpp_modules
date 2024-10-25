@@ -6,7 +6,7 @@
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 08:37:58 by locharve          #+#    #+#             */
-/*   Updated: 2024/10/23 11:54:06 by locharve         ###   ########.fr       */
+/*   Updated: 2024/10/25 11:30:12 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 # define DIAMONDTRAP_HPP
 
 # include "ScavTrap.hpp"
-# include "FlagTrap.hpp"
+# include "FragTrap.hpp"
 
-class	DiamondTrap: public ScavTrap, public FlagTrap {
+class	DiamondTrap: public ScavTrap, public FragTrap {
 	private:
 		std::string	_name;
 	//	std::string	ClapTrap::_name; ///
@@ -29,6 +29,7 @@ class	DiamondTrap: public ScavTrap, public FlagTrap {
 
 		void	setClapTrapName(std::string name);
 		std::string	getClapTrapName(void) const;
+		std::string	getName(void) const;
 
 		int	isAlive(void);
 		void	attack(const std::string& target);

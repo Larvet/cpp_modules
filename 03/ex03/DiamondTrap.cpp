@@ -6,28 +6,33 @@
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 08:59:15 by locharve          #+#    #+#             */
-/*   Updated: 2024/10/23 11:54:01 by locharve         ###   ########.fr       */
+/*   Updated: 2024/10/25 11:35:52 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(void) {
+DiamondTrap::DiamondTrap(void): ClapTrap("unnamed_clap_name") {
 	setName("unnamed");
-	setClapTrapName("unnamed"); //
+//	setClapTrapName("unnamed"); //
 	setHitPoints(100); //
 	setEnergyPoints(50); //
 	setAttackDamage(30); //
 	std::cout << "------- DiamondTrap default constructor called: " << getName() << std::endl;
 }
 
-DiamondTrap::DiamondTrap(std::string name): _name(name) {
+DiamondTrap::DiamondTrap(std::string name): ClapTrap(name + "_clap_name"), _name(name) {
 //	setName(name);
-	setClapTrapName(name); //
-	setHitPoints(100); //
-	setEnergyPoints(50); //
-	setAttackDamage(30); //
+//	setClapTrapName(name); //
+	setHitPoints(FragTrap::getHitPoints());
+//	setHitPoints(100); //
+	setEnergyPoints(ScavTrap::getEnergyPoints());
+//	setEnergyPoints(50); //
+	setAttackDamage(FragTrap::getAttackDamage());
+//	setAttackDamage(30); //
 	std::cout << "------- DiamondTrap string constructor called: " << getName() << std::endl;
+	std::cout << "name = " << _name << std::endl
+		<< "clap_name = " << ClapTrap::_name << std::endl;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap& src) {
@@ -49,11 +54,17 @@ DiamondTrap::~DiamondTrap(void) {
 }
 
 void	DiamondTrap::setClapTrapName(std::string name) {
-	ClapTrap::setName(name + "_clap_name");
+//	ClapTrap::setName(name + "_clap_name");
+ClapTrap::_name = name + "_clap_name";
 }
 
 std::string	DiamondTrap::getClapTrapName(void) const {
-	return (ClapTrap::getName());
+//	return (ClapTrap::getName());
+	return (ClapTrap::_name);
+}
+
+std::string	DiamondTrap::getName(void) const {
+	return (this->_name);
 }
 
 int	DiamondTrap::isAlive(void) {

@@ -6,27 +6,23 @@
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 11:32:53 by locharve          #+#    #+#             */
-/*   Updated: 2024/10/23 07:52:19 by locharve         ###   ########.fr       */
+/*   Updated: 2024/10/25 11:38:13 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-/* ScavTrap::ScavTrap(std::string name): _name(name), _hitPoints(100), _energyPoints(50), _attackDamage(20) {
-	std::cout << "------- ScavTrap string constructor called: " << getName() << std::endl;
-} */
-
-ScavTrap::ScavTrap(void) {
-	setName("unnamed");
+ScavTrap::ScavTrap(void): ClapTrap("unnamed") {
+//	setName("unnamed");
 	setHitPoints(100);
 	setEnergyPoints(50);
 	setAttackDamage(20);
 	std::cout << "------- ScavTrap default constructor called: " << getName() << std::endl;
 }
 
-ScavTrap::ScavTrap(std::string name) {
-	setName(name);
-	setHitPoints(100);
+ScavTrap::ScavTrap(std::string name): ClapTrap(name), ClapTrap::setHitPoints(100) {
+//	setName(name);
+//	setHitPoints(100);
 	setEnergyPoints(50);
 	setAttackDamage(20);
 	std::cout << "------- ScavTrap string constructor called: " << getName() << std::endl;

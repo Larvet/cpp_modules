@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FlagTrap.hpp                                       :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 07:35:37 by locharve          #+#    #+#             */
-/*   Updated: 2024/10/23 08:33:52 by locharve         ###   ########.fr       */
+/*   Updated: 2024/10/25 10:34:58 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FLAGTRAP_HPP
-# define FLAGTRAP_HPP
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 
 # include "ClapTrap.hpp"
 
-class	FlagTrap: public ClapTrap {
+class	FragTrap: public virtual ClapTrap {
 	public:
-		FlagTrap(void);
-		FlagTrap(std::string name);
-		FlagTrap(const FlagTrap& src);
-		FlagTrap&	operator=(const FlagTrap& src);
-		~FlagTrap(void);
+		FragTrap(void);
+		FragTrap(std::string name);
+		FragTrap(const FragTrap& src);
+		FragTrap&	operator=(const FragTrap& src);
+		~FragTrap(void);
 
-		int	isAlive(void);
+		virtual int	isAlive(void);
 
-		void	attack(const std::string& target);
-		void	takeDamage(unsigned int amount);
-		void	beRepaired(unsigned int amount);
+		virtual void	attack(const std::string& target);
+		virtual void	takeDamage(unsigned int amount);
+		virtual void	beRepaired(unsigned int amount);
 
 		void	highFivesGuys(void);
 };
