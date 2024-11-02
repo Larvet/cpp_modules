@@ -6,7 +6,7 @@
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 10:10:05 by locharve          #+#    #+#             */
-/*   Updated: 2024/10/23 07:22:56 by locharve         ###   ########.fr       */
+/*   Updated: 2024/11/02 12:56:00 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void	ClapTrap::attack(const std::string& target) {
 
 void	ClapTrap::takeDamage(unsigned int amount) {
 	setHitPoints(getHitPoints() - amount);
+	std::cout << "ClapTrap " << getName() << " lost " << amount << " HP !" << std::endl;
 	if (getHitPoints() <= 0)
 		std::cout << "ClapTrap " << getName() << " died !" << std::endl;
 }
@@ -93,9 +94,11 @@ void	ClapTrap::takeDamage(unsigned int amount) {
 void	ClapTrap::beRepaired(unsigned int amount) {
 	if (getEnergyPoints()) {
 		if (getHitPoints() < 10) {
+			if (getHitPoints() + amount > 10)
+				amount = 10 - getHitPoints();
 			std::cout
 				<< "ClapTrap " << getName()
-				<< " repairs itself !" << std::endl;
+				<< " repairs itself: its HP increases by " << amount << "." << std::endl;
 			setHitPoints(getHitPoints() + amount);
 			setEnergyPoints(getEnergyPoints() - 1);
 		}

@@ -6,13 +6,13 @@
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 07:35:45 by locharve          #+#    #+#             */
-/*   Updated: 2024/10/25 11:27:05 by locharve         ###   ########.fr       */
+/*   Updated: 2024/11/02 12:58:36 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(void): ClapTrap("unnamed") {
+FragTrap::FragTrap(void): ClapTrap() {
 //	setName("unnamed");
 	setHitPoints(100);
 	setEnergyPoints(100);
@@ -75,9 +75,12 @@ void	FragTrap::attack(const std::string& target) {
 }
 
 void	FragTrap::takeDamage(unsigned int amount) {
-	if (!isAlive())
+	if (getHitPoints() <= 0) {
+		std::cout << "FragTrap " << getName() << " is already dead..." << std::endl;
 		return ;
+	}
 	setHitPoints(getHitPoints() - amount);
+	std::cout << "FragTrap " << getName() << " lost " << amount << " HP !" << std::endl;
 	if (getHitPoints() <= 0)
 		std::cout << "FragTrap " << getName() << " died !" << std::endl;
 }
@@ -87,9 +90,11 @@ void	FragTrap::beRepaired(unsigned int amount) {
 		return ;
 	if (getEnergyPoints()) {
 		if (getHitPoints() < 100) {
+			if (getHitPoints() + amount > 100)
+				amount = 100 - getHitPoints();
 			std::cout
 				<< "FragTrap " << getName()
-				<< " repairs itself!" << std::endl;
+				<< " repairs itself: its HP increases by " << amount << "." << std::endl;
 			setHitPoints(getHitPoints() + amount);
 			setEnergyPoints(getEnergyPoints() - 1);
 		}

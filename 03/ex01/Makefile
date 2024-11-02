@@ -6,13 +6,13 @@
 #    By: locharve <locharve@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/16 10:38:02 by locharve          #+#    #+#              #
-#    Updated: 2024/10/23 07:35:29 by locharve         ###   ########.fr        #
+#    Updated: 2024/11/02 12:17:12 by locharve         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = flagtrap
+NAME = scavtrap
 
-SRC = main.cpp ClapTrap.cpp ScavTrap.cpp FlagTrap.cpp
+SRC = main.cpp ClapTrap.cpp ScavTrap.cpp
 OBJ = $(SRC:.cpp=.o)
 
 CXX = c++

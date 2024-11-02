@@ -6,7 +6,7 @@
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 08:59:15 by locharve          #+#    #+#             */
-/*   Updated: 2024/10/25 11:35:52 by locharve         ###   ########.fr       */
+/*   Updated: 2024/11/02 12:58:31 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ DiamondTrap::DiamondTrap(std::string name): ClapTrap(name + "_clap_name"), _name
 	setAttackDamage(FragTrap::getAttackDamage());
 //	setAttackDamage(30); //
 	std::cout << "------- DiamondTrap string constructor called: " << getName() << std::endl;
-	std::cout << "name = " << _name << std::endl
-		<< "clap_name = " << ClapTrap::_name << std::endl;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap& src) {
@@ -84,9 +82,12 @@ void	DiamondTrap::attack(const std::string& target) {
 }
 
 void	DiamondTrap::takeDamage(unsigned int amount) {
-	if (!isAlive())
+	if (getHitPoints() <= 0) {
+		std::cout << "DiamondTrap " << getName() << " is already dead..." << std::endl;
 		return ;
+	}
 	setHitPoints(getHitPoints() - amount);
+	std::cout << "DiamondTrap " << getName() << " lost " << amount << " HP !" << std::endl;
 	if (getHitPoints() <= 0)
 		std::cout << "DiamondTrap " << getName() << " died !" << std::endl;
 }
@@ -96,9 +97,11 @@ void	DiamondTrap::beRepaired(unsigned int amount) {
 		return ;
 	if (getEnergyPoints()) {
 		if (getHitPoints() < 100) {
+			if (getHitPoints() + amount > 100)
+				amount = 100 - getHitPoints();
 			std::cout
 				<< "DiamondTrap " << getName()
-				<< " repairs itself !" << std::endl;
+				<< " repairs itself: its HP increases by " << amount << "." << std::endl;
 			setHitPoints(getHitPoints() + amount);
 			setEnergyPoints(getEnergyPoints() - 1);
 		}

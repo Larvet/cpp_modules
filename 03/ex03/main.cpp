@@ -6,11 +6,13 @@
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 08:03:30 by locharve          #+#    #+#             */
-/*   Updated: 2024/10/25 11:34:55 by locharve         ###   ########.fr       */
+/*   Updated: 2024/11/02 12:58:39 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
+
+// change beRepaired
 
 int	main(void) {
 	FragTrap	gortax("Gortax");
@@ -42,5 +44,18 @@ int	main(void) {
 	gortax.takeDamage(kogromoth.getAttackDamage());
 
 	kogromoth.whoAmI();
+
+	ClapTrap	morkoboth("Morkoboth");
+	morkoboth.attack(kogromoth.getName());
+	std::cout << morkoboth << std::endl;
+	kogromoth.takeDamage(morkoboth.getAttackDamage());
+	std::cout << kogromoth << std::endl;
+
+	kogromoth.beRepaired(1);
+	kogromoth.highFivesGuys();
+	kogromoth.attack(morkoboth.getName());
+	std::cout << kogromoth << std::endl;
+	morkoboth.takeDamage(kogromoth.getAttackDamage());
+	std::cout << morkoboth << std::endl;
 	return (0);
 }

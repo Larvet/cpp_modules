@@ -6,26 +6,22 @@
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 11:32:53 by locharve          #+#    #+#             */
-/*   Updated: 2024/10/23 07:52:19 by locharve         ###   ########.fr       */
+/*   Updated: 2024/11/02 12:55:11 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-/* ScavTrap::ScavTrap(std::string name): _name(name), _hitPoints(100), _energyPoints(50), _attackDamage(20) {
-	std::cout << "------- ScavTrap string constructor called: " << getName() << std::endl;
-} */
-
-ScavTrap::ScavTrap(void) {
-	setName("unnamed");
+ScavTrap::ScavTrap(void): ClapTrap() {
+//	setName("unnamed");
 	setHitPoints(100);
 	setEnergyPoints(50);
 	setAttackDamage(20);
 	std::cout << "------- ScavTrap default constructor called: " << getName() << std::endl;
 }
 
-ScavTrap::ScavTrap(std::string name) {
-	setName(name);
+ScavTrap::ScavTrap(std::string name): ClapTrap(name) {
+//	setName(name);
 	setHitPoints(100);
 	setEnergyPoints(50);
 	setAttackDamage(20);
@@ -79,9 +75,12 @@ void	ScavTrap::attack(const std::string& target) {
 }
 
 void	ScavTrap::takeDamage(unsigned int amount) {
-	if (!isAlive())
+	if (getHitPoints() <= 0) {
+		std::cout << "ScavTrap " << getName() << " is already dead..." << std::endl;
 		return ;
+	}
 	setHitPoints(getHitPoints() - amount);
+	std::cout << "ScavTrap " << getName() << " lost " << amount << " HP !" << std::endl;
 	if (getHitPoints() <= 0)
 		std::cout << "ScavTrap " << getName() << " died !" << std::endl;
 }
@@ -91,9 +90,11 @@ void	ScavTrap::beRepaired(unsigned int amount) {
 		return ;
 	if (getEnergyPoints()) {
 		if (getHitPoints() < 100) {
+			if (getHitPoints() + amount > 100)
+				amount = 100 - getHitPoints();
 			std::cout
 				<< "ScavTrap " << getName()
-				<< " repairs itself !" << std::endl;
+				<< " repairs itself: its HP increases by " << amount << "." << std::endl;
 			setHitPoints(getHitPoints() + amount);
 			setEnergyPoints(getEnergyPoints() - 1);
 		}
