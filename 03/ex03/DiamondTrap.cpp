@@ -6,44 +6,35 @@
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 08:59:15 by locharve          #+#    #+#             */
-/*   Updated: 2024/11/02 12:58:31 by locharve         ###   ########.fr       */
+/*   Updated: 2024/11/03 09:11:02 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(void): ClapTrap("unnamed_clap_name") {
-	setName("unnamed");
-//	setClapTrapName("unnamed"); //
-	setHitPoints(100); //
-	setEnergyPoints(50); //
-	setAttackDamage(30); //
+DiamondTrap::DiamondTrap(void): ClapTrap("unnamed_clap_name"), _name("unnamed") {
+	setHitPoints(100);
+	setEnergyPoints(50);
+	setAttackDamage(30);
 	std::cout << "------- DiamondTrap default constructor called: " << getName() << std::endl;
 }
 
 DiamondTrap::DiamondTrap(std::string name): ClapTrap(name + "_clap_name"), _name(name) {
-//	setName(name);
-//	setClapTrapName(name); //
-	setHitPoints(FragTrap::getHitPoints());
-//	setHitPoints(100); //
-	setEnergyPoints(ScavTrap::getEnergyPoints());
-//	setEnergyPoints(50); //
-	setAttackDamage(FragTrap::getAttackDamage());
-//	setAttackDamage(30); //
+	setHitPoints(100);
+	setEnergyPoints(50);
+	setAttackDamage(30);
 	std::cout << "------- DiamondTrap string constructor called: " << getName() << std::endl;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap& src) {
+DiamondTrap::DiamondTrap(const DiamondTrap& src) : ClapTrap(src.getName() + "_clap_name"), _name(src.getName()) {
 	*this = src;
 	std::cout << "------- DiamondTrap copy constructor called: " << getName() << std::endl;
 }
 
 DiamondTrap&	DiamondTrap::operator=(const DiamondTrap& src) {
-	setName(src.getName());
-	setClapTrapName(src.getClapTrapName()); //
-	setHitPoints(src.getHitPoints()); //
-	setEnergyPoints(src.getEnergyPoints()); //
-	setAttackDamage(src.getAttackDamage()); //
+	setHitPoints(src.getHitPoints());
+	setEnergyPoints(src.getEnergyPoints());
+	setAttackDamage(src.getAttackDamage());
 	return (*this);
 }
 
@@ -52,12 +43,10 @@ DiamondTrap::~DiamondTrap(void) {
 }
 
 void	DiamondTrap::setClapTrapName(std::string name) {
-//	ClapTrap::setName(name + "_clap_name");
 ClapTrap::_name = name + "_clap_name";
 }
 
 std::string	DiamondTrap::getClapTrapName(void) const {
-//	return (ClapTrap::getName());
 	return (ClapTrap::_name);
 }
 

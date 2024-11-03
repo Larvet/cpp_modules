@@ -6,14 +6,13 @@
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 07:35:45 by locharve          #+#    #+#             */
-/*   Updated: 2024/11/02 12:58:36 by locharve         ###   ########.fr       */
+/*   Updated: 2024/11/03 09:11:11 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
 FragTrap::FragTrap(void): ClapTrap() {
-//	setName("unnamed");
 	setHitPoints(100);
 	setEnergyPoints(100);
 	setAttackDamage(30);
@@ -21,14 +20,13 @@ FragTrap::FragTrap(void): ClapTrap() {
 }
 
 FragTrap::FragTrap(std::string name): ClapTrap(name) {
-//	setName(name);
 	setHitPoints(100);
 	setEnergyPoints(100);
 	setAttackDamage(30);
 	std::cout << "------- FragTrap string constructor called: " << getName() << std::endl;
 }
 
-FragTrap::FragTrap(const FragTrap& src) {
+FragTrap::FragTrap(const FragTrap& src): ClapTrap(src.getName()) {
 	*this = src;
 	std::cout << "------- FragTrap copy constructor called: " << getName() << std::endl;
 }

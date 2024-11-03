@@ -6,7 +6,7 @@
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 08:37:58 by locharve          #+#    #+#             */
-/*   Updated: 2024/10/25 11:30:12 by locharve         ###   ########.fr       */
+/*   Updated: 2024/11/03 08:49:56 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 class	DiamondTrap: public ScavTrap, public FragTrap {
 	private:
 		std::string	_name;
-	//	std::string	ClapTrap::_name; ///
 	public:
 		DiamondTrap(void);
 		DiamondTrap(std::string name);
