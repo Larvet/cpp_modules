@@ -6,7 +6,7 @@
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 11:43:34 by locharve          #+#    #+#             */
-/*   Updated: 2024/10/25 12:01:00 by locharve         ###   ########.fr       */
+/*   Updated: 2024/11/05 12:35:05 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	Animal::setType(std::string t) {
 	type = t;
 }
 
-std::string	getType(void) const {
+std::string	Animal::getType(void) const {
 	return (type);
 }
 

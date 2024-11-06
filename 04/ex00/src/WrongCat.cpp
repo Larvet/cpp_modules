@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/25 11:58:15 by locharve          #+#    #+#             */
-/*   Updated: 2024/10/25 12:07:55 by locharve         ###   ########.fr       */
+/*   Created: 2024/11/05 12:13:59 by locharve          #+#    #+#             */
+/*   Updated: 2024/11/05 12:37:21 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "WrongCat.hpp"
 
-Dog::Dog(void): Animal("Dog") {
-	std::cout << "------- Dog default constructor called" << std::endl;
+WrongCat::WrongCat(): WrongAnimal() {
+	type = "WrongCat";
+	std::cout << "------- WrongCat default constructor called" << std::endl;
 }
 
-Dog::Dog(const Dog& src) {
+WrongCat::WrongCat(const WrongCat& src) {
 	*this = src;
-	std::cout << "------- Dog copy constructor called" << std::endl;
+	std::cout << "------- WrongCat copy constructor called" << std::endl;
 }
 
-Dog&	Dog::operator=(const Dog& src) {
+WrongCat&	WrongCat::operator=(const WrongCat& src) {
 	setType(src.getType());
 	return (*this);
 }
 
-Dog::~Dog(void) {
-	std::cout << "------- Dog default constructor called" << std::endl;
-}
-
-void	Dog::makeSound(void) const {
-	std::cout << "I'M A DOG GIVE ME YOUR ATTENTION" << std::endl;
+WrongCat::~WrongCat() {
+	std::cout << "------- WrongCat destructor called" << std::endl;
 }
