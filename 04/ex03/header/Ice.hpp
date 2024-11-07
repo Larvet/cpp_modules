@@ -6,7 +6,7 @@
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:42:47 by locharve          #+#    #+#             */
-/*   Updated: 2024/11/06 11:51:11 by locharve         ###   ########.fr       */
+/*   Updated: 2024/11/07 10:29:02 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define ICE_HPP
 
 # include "AMateria.hpp"
+# include "ICharacter.hpp"
 
 class	Ice: public AMateria {
 	public:
@@ -21,6 +22,9 @@ class	Ice: public AMateria {
 		Ice(const Ice& src);
 		Ice&	operator=(const Ice& src);
 		~Ice();
+
+		AMateria*	clone() const;
+		void	use(ICharacter& target);
 };
 
 #endif

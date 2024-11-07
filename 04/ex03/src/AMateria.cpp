@@ -6,7 +6,7 @@
 /*   By: locharve <locharve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:33:10 by locharve          #+#    #+#             */
-/*   Updated: 2024/11/06 11:53:45 by locharve         ###   ########.fr       */
+/*   Updated: 2024/11/07 10:26:14 by locharve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ AMateria&	AMateria::operator=(const AMateria& src) {
 }
 
 AMateria::~AMateria() {
-	std::cout << "------- AMateria destructor called" << std::endl;
+	std::cout << "======= AMateria destructor called" << std::endl;
 }
 
 AMateria::AMateria(std::string const & type): _type(type) {
@@ -42,4 +42,6 @@ std::string const &	AMateria::getType() const {
 	return (_type);
 }
 
-//void	AMateria::use(ICharacter& target) {} ////
+void	AMateria::use(ICharacter& target) {
+	(void) target;
+} ////
